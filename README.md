@@ -1,5 +1,3 @@
-Here is the content formatted for direct copy-pasting into `README.md` files:
-
 ---
 
 ### **Frontend README.md**
