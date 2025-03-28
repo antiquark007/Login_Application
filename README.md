@@ -1,171 +1,153 @@
+# Fullstack Login System
 
----
+## Project Overview
+A complete login system with a React frontend and Express backend, designed to provide secure user authentication.
 
-### **Frontend README.md**
-```markdown
-# React Frontend for Login System
+## System Architecture
+- **Frontend**: React, TypeScript, Vite
+- **Backend**: Node.js, Express, TypeScript, Prisma
+- **Database**: PostgreSQL
 
-## Overview
-This is the frontend of the login system built with React, TypeScript, and Vite. It includes user authentication features such as login and redirection to a dashboard.
-
-## Tech Stack
-- **React**: Frontend library
-- **TypeScript**: For type safety
-- **React Router**: For routing
-- **React Query**: For API state management
-- **Tailwind CSS**: For styling
-- **Vite**: Build tool
-
-## Project Structure
+## Repository Structure
 ```
-src/
-├── App.tsx          # Main application component
-├── index.css        # Global styles
-├── main.tsx         # Entry point
-├── components/      # Reusable UI components
-├── hooks/           # Custom hooks
-├── pages/           # Page components (e.g., LoginForm, Dashboard)
-├── schemas/         # Validation schemas
-├── types/           # Type definitions
-```
-
-## Setup Instructions
-1. **Install Dependencies**:
-   ```bash
-   cd frontend
-   npm install
-   ```
-
-2. **Run the Development Server**:
-   ```bash
-   npm run dev
-   ```
-
-3. **Build for Production**:
-   ```bash
-   npm run build
-   ```
-
-4. **Preview Production Build**:
-   ```bash
-   npm run preview
-   ```
-
-## Environment Variables
-No environment variables are required for the frontend. The backend API is proxied via Vite's configuration.
-
-## How to Use
-1. Start the backend server (see backend README).
-2. Start the frontend server using `npm run dev`.
-3. Open the app in your browser at `http://localhost:5173`.
+login-system/
+├── frontend/        # React TypeScript frontend
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── hooks/
+│   │   └── utils/
+│   ├── package.json
+│   └── README.md
+└── backend/         # Express TypeScript backend
+    ├── src/
+    │   ├── controllers/
+    │   ├── routes/
+    │   ├── middlewares/
+    │   └── utils/
+    ├── package.json
+    └── README.md
 ```
 
----
+## Prerequisites
+- Node.js (v18+)
+- npm (v9+)
+- PostgreSQL (v13+)
 
-### **Backend README.md**
-```markdown
-# Express Backend for Login System
-
-## Overview
-This is the backend of the login system built with Node.js, TypeScript, and Prisma. It provides APIs for user registration and login.
-
-## Tech Stack
-- **Node.js**: Backend runtime
-- **Express**: Web framework
-- **TypeScript**: For type safety
-- **Prisma**: ORM for database management
-- **PostgreSQL**: Database
-- **bcrypt**: For password hashing
-
-## Project Structure
-```
-src/
-├── app.ts           # Express app setup
-├── server.ts        # Server entry point
-├── controllers/     # Business logic for routes
-├── middlewares/     # Middleware (e.g., error handling)
-├── routes/          # API route definitions
-├── utils/           # Utility functions and classes
+## Global Setup
+1. Clone the repository
+2. Install root-level dependencies (optional)
+```bash
+git clone https://github.com/yourusername/login-system.git
+cd login-system
 ```
 
-## Setup Instructions
-1. **Install Dependencies**:
-   ```bash
-   cd backend
-   npm install
-   ```
+## Frontend Setup
 
-2. **Set Up Environment Variables**:
-   Create a `.env` file in the `backend` directory with the following content:
-   ```
-   DATABASE_URL="postgresql://<username>:<password>@localhost:5432/<database_name>"
-   PORT=5000
-   ```
+### Tech Stack
+- React
+- TypeScript
+- Vite
+- React Router
+- React Query
+- Tailwind CSS
 
-3. **Run Database Migrations**:
-   ```bash
-   npx prisma migrate dev
-   ```
+### Installation
+```bash
+cd frontend
+npm install
+```
 
-4. **Start the Development Server**:
-   ```bash
-   npm run dev
-   ```
+### Running the Frontend
+```bash
+# Development server
+npm run dev
 
-5. **Build for Production**:
-   ```bash
-   npm run build
-   ```
+# Production build
+npm run build
+npm run preview
+```
 
-6. **Start the Production Server**:
-   ```bash
-   npm start
-   ```
+## Backend Setup
+
+### Tech Stack
+- Node.js
+- Express
+- TypeScript
+- Prisma
+- PostgreSQL
+- bcrypt
+
+### Database Configuration
+1. Create a PostgreSQL database
+2. Create `.env` file in `backend/` directory
+```bash
+DATABASE_URL="postgresql://username:password@localhost:5432/logindb"
+PORT=5000
+JWT_SECRET=your_secure_secret_key
+```
+
+### Installation
+```bash
+cd backend
+npm install
+
+# Run database migrations
+npx prisma migrate dev --name init
+```
+
+### Running the Backend
+```bash
+# Development server
+npm run dev
+
+# Production build
+npm run build
+npm start
+```
 
 ## API Endpoints
-### **POST /api/users/register**
-- **Description**: Registers a new user.
-- **Request Body**:
-  ```json
-  {
-    "uid": "string",
-    "password": "string"
-  }
-  ```
-- **Response**:
-  ```json
-  {
-    "user": {
-      "id": "number",
-      "uid": "string"
-    }
-  }
-  ```
 
-### **POST /api/users/login**
-- **Description**: Logs in a user.
+### User Registration
+- **URL**: `/api/users/register`
+- **Method**: `POST`
 - **Request Body**:
-  ```json
-  {
-    "uid": "string",
-    "password": "string"
-  }
-  ```
-- **Response**:
-  ```json
-  {
-    "user": {
-      "id": "string",
-      "uid": "string",
-      "name": "string"
-    }
-  }
-  ```
-
-## How to Use
-1. Start the backend server using `npm run dev`.
-2. Use tools like Postman or cURL to test the API endpoints.
-3. Connect the frontend to the backend by starting both servers.
+```json
+{
+  "uid": "username",
+  "password": "securepassword"
+}
 ```
 
-You can copy and paste these directly into `README.md` files for the frontend and backend projects.
+### User Login
+- **URL**: `/api/users/login`
+- **Method**: `POST`
+- **Request Body**:
+```json
+{
+  "uid": "username",
+  "password": "securepassword"
+}
+```
+
+## Development Workflow
+1. Start PostgreSQL
+2. Start backend server (`backend/: npm run dev`)
+3. Start frontend server (`frontend/: npm run dev`)
+4. Access application at `http://localhost:5173`
+
+## Security Features
+- Password hashing
+- Input validation
+- Error handling middleware
+
+## Recommended Tools
+- Postman (API testing)
+- VSCode (Development)
+- pgAdmin (Database management)
+
+## Troubleshooting
+- Ensure all environment variables are set
+- Check database connection
+- Verify dependency versions
+- Review server logs for detailed errors
