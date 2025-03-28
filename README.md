@@ -38,8 +38,8 @@ login-system/
 1. Clone the repository
 2. Install root-level dependencies (optional)
 ```bash
-git clone https://github.com/yourusername/login-system.git
-cd login-system
+git clone https://github.com/antiquark007/Login_Application.git
+cd Login_Application
 ```
 
 ## Frontend Setup
