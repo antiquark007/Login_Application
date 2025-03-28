@@ -84,7 +84,6 @@ npm run preview
 ```bash
 DATABASE_URL="postgresql://username:password@localhost:5432/logindb"
 PORT=5000
-JWT_SECRET=your_secure_secret_key
 ```
 
 ### Installation
