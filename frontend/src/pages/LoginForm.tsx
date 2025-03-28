@@ -19,7 +19,6 @@ function LoginForm() {
     });
   
     const onSubmit = (data: LoginFormData) => {
-      console.log(data);
       login(data, {
         onSuccess: () => {
           // Handle successful login
